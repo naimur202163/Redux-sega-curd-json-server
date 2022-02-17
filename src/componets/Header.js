@@ -1,16 +1,19 @@
 import {
-    MDBCollapse,
-    MDBContainer,
-    MDBIcon,
-    MDBNavbar,
-    MDBNavbarBrand,
-    MDBNavbarNav,
-    MDBNavbarToggler
+  MDBCollapse,
+  MDBContainer,
+  MDBIcon,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarNav,
+  MDBNavbarToggler
 } from "mdb-react-ui-kit";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function Header() {
-    const [showBasic,setShowBasic]=useState(false)
+  const [showBasic, setShowBasic] = useState(false);
   return (
     <>
       <MDBNavbar expand="lg" light bgColor="primary">
@@ -29,14 +32,34 @@ function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
             className="text-white"
-            onClick={()=>setShowBasic(!showBasic)}
+            onClick={() => setShowBasic(!showBasic)}
           >
-                <MDBIcon fas icon="bars"/>
+            <MDBIcon fas icon="bars" />
           </MDBNavbarToggler>
           <MDBCollapse navbar show={showBasic}>
-                <MDBNavbarNav
-                    className="mr-auto mb-2 mb-lg-0"
-                ></MDBNavbarNav>
+            <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+              <MDBNavbarItem>
+                <MDBNavbarLink className="nav-link">
+                  <NavLink to="/" className="text-white">
+                    Home
+                  </NavLink>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink className="nav-link">
+                  <NavLink to="/addUser" className="text-white">
+                  AddUser
+                  </NavLink>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink className="nav-link">
+                  <NavLink to="/about" className="text-white">
+                      About
+                  </NavLink>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
